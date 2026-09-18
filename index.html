@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Para ti ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap');
+*{box-sizing:border-box}
+body{margin:0;background:#eee8df;color:#5d4037;font-family:'Cormorant Garamond',serif;overflow-x:hidden}
+.screen{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px;position:relative}
+.hidden{display:none!important}
+.intro{background:linear-gradient(145deg,#f8eee8,#eee1d4)}
+.intro-card{text-align:center;max-width:360px;width:100%;animation:fade .9s ease}
+.intro-card h1{font-size:38px;font-weight:500;margin:8px 0 0}
+.intro-card p{font-size:21px;margin:4px 0 28px;font-style:italic}
+.heart{border:0;background:none;font-size:56px;cursor:pointer;animation:pulse 1.4s infinite;filter:drop-shadow(0 4px 5px #b88)}
+.bar{width:220px;height:7px;border-radius:20px;background:#dfcfc2;margin:28px auto 0;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:#a95f48;border-radius:20px;transition:width 1.8s ease}
+.small{font-family:Montserrat,sans-serif;font-size:10px;letter-spacing:2px;margin-top:12px;color:#8b766c}
+.page{max-width:470px;width:100%;min-height:100svh;margin:auto;padding:42px 20px 70px;text-align:center}
+.title{font-size:30px;line-height:1.1;margin:0 0 3px;font-weight:500}
+.date{font-size:13px;letter-spacing:2px;color:#90766a;margin-bottom:24px}
+.polaroid{background:#fff;padding:10px 10px 28px;box-shadow:0 8px 25px #8b756430;transform:rotate(-1deg);max-width:330px;margin:0 auto}
+.polaroid img{display:block;width:100%;height:330px;object-fit:cover;background:#ded4cb}
+.dots{letter-spacing:7px;font-size:12px;margin-top:7px}
+.doodles{font-size:23px;letter-spacing:8px;margin-top:4px}
+.wave{font-size:38px;margin:18px 0;color:#927a6e}
+.envelope{position:relative;max-width:330px;height:190px;margin:0 auto 25px;background:#e8d1b5;box-shadow:0 8px 22px #765c4528;overflow:hidden;border-radius:3px;cursor:pointer}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 49.5%,#d8bda0 50%,transparent 50.5%),linear-gradient(45deg,transparent 49.5%,#d8bda0 50%,transparent 50.5%)}
+.seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:#8f4e40;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;z-index:2}
+.hint{font-size:13px;font-style:italic;margin-bottom:28px}
+.letter{max-width:340px;margin:auto;background:linear-gradient(135deg,#f4dfb9,#ead09f);padding:28px 25px;box-shadow:0 8px 25px #7d624230;border-radius:5px;text-align:left;font-size:19px;line-height:1.45;position:relative}
+.letter:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.18;background:repeating-linear-gradient(0deg,transparent 0 29px,#9c7d55 30px)}
+.letter p{position:relative;z-index:1;margin:0 0 24px}
+.signature{text-align:center;font-style:italic;font-size:23px}
+.music{position:fixed;right:15px;bottom:15px;border:0;border-radius:50%;width:46px;height:46px;background:#a95f48;color:white;font-size:19px;box-shadow:0 5px 15px #0002;cursor:pointer}
+.upload{font-family:Montserrat,sans-serif;font-size:12px;margin:18px auto;display:block}
+#photoInput{display:none}
+footer{font-family:Montserrat,sans-serif;font-size:9px;letter-spacing:3px;color:#a38b80;margin-top:40px}
+@keyframes pulse{50%{transform:scale(1.12)}}
+@keyframes fade{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+.pop{animation:pop .7s ease}
+</style>
+</head>
+<body>
+
+<section id="intro" class="screen intro">
+  <div class="intro-card">
+    <div style="font-size:22px">♥</div>
+    <h1 id="nameIntro">Marviela</h1>
+    <p>¡la última vez!</p>
+    <button class="heart" aria-label="Abrir">♥</button>
+    <div class="bar"><span id="progress"></span></div>
+    <div class="small">100%</div>
+  </div>
+</section>
+
+<main id="main" class="page hidden">
+  <h1 class="title">Hoy es el cumpleaños<br>de mi persona favorita</h1>
+  <div class="date" id="date">21 DE SEPTIEMBRE</div>
+
+  <label class="upload">📷 Cambiar foto
+    <input id="photoInput" type="file" accept="image/*">
+  </label>
+
+  <div class="polaroid">
+    <img id="mainPhoto" src="assets/foto-marviela.jpeg" alt="Nuestra foto">
+    <div class="dots">• • •</div>
+    <div class="doodles">✶ ♡ ♡ ♡ ✶</div>
+  </div>
+
+  <div class="wave">〰</div>
+
+  <div class="envelope" id="envelope" title="Toca para abrir la carta">
+    <div class="seal">ábrelo</div>
+  </div>
+  <div class="hint">Toca el sobre para abrir mi mensaje ❤️</div>
+
+  <div id="letter" class="letter hidden">
+    <p>🎈 👑 🎈</p>
+    <p>Hay personas que llegan y lo cambian todo. Pienso que ni el destino escribiendo la mejor de las historias habría creado a alguien tan especial como tú.</p>
+    <p>Hoy celebro tu risa, tu luz y tu forma de hacerme sentir en casa. Que la vida te siga mostrando que no hay nada más especial que <b>tú.</b></p>
+    <p style="text-align:center;font-style:italic">Cada año tuyo es un capítulo nuevo, y pienso estar en todos los que pueda. ❤️</p>
+    <p class="signature">Feliz cumpleaños, mi amor.<br>Con todo mi cariño.</p>
+  </div>
+
+  <footer>HECHO CON AMOR ♥</footer>
+</main>
+
+<button class="music hidden" id="musicBtn">♫</button>
+
+<script>
+const nombre = "Marviela";
+const fecha = "21 DE SEPTIEMBRE";
+const foto = "assets/foto-marviela.jpeg";
+
+document.getElementById("nameIntro").textContent = nombre;
+document.getElementById("date").textContent = fecha;
+
+const intro = document.getElementById("intro");
+const main = document.getElementById("main");
+const progress = document.getElementById("progress");
+const heart = document.querySelector(".heart");
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letter");
+const input = document.getElementById("photoInput");
+const img = document.getElementById("mainPhoto");
+
+if(foto) img.src = foto;
+
+heart.addEventListener("click",()=>{
+  progress.style.width="100%";
+  setTimeout(()=>{
+    intro.classList.add("hidden");
+    main.classList.remove("hidden");
+    main.classList.add("pop");
+  },1200);
+});
+
+envelope.addEventListener("click",()=>{
+  letter.classList.toggle("hidden");
+  if(!letter.classList.contains("hidden")){
+    letter.classList.add("pop");
+    envelope.style.transform="scale(.96)";
+    setTimeout(()=>envelope.style.transform="",300);
+  }
+});
+
+input.addEventListener("change",e=>{
+  const file=e.target.files[0];
+  if(file) img.src=URL.createObjectURL(file);
+});
+</script>
+</body>
+</html>
